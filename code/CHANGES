@@ -1,0 +1,6 @@
+1.0.1 - Frédéric, Florence
+- Initial release.
+
+1.0.2 - Florence
+- Add erosion option of WM for holes removal
+- Add step 2: Extracting shell used for WM and frf computation. Instead of the initial input shells, you must now specify which shell(s) 	  will be used for WM and frf computation. By default, only the single shell b1000 is now used. Fodf are still computed with input shells.
