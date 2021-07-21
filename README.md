@@ -9,9 +9,27 @@ All of the relevant data is stored on braindata (`braindata/datasets/DiSCo`). Th
 - DiSCo3 is the validation data, for which we also have the ground-truth connectivity matrix.
 - DiSCo2 is the test data, for which we do not have the ground-truth connectivity matrix.
 
+## Pipeline
+
+The pipeline does some very basic processing steps right now:
+
+- Step 1 : Denoise DWI
+- Step 2 : Extract shell used for WM and frf computing
+- Step 3 : Compute FA map
+- Step 4 : Compute tissue masks
+- Step 5 : Compute frf
+- Step 6 : Compute fodf
+- Step 7 : Compute local tracking (use 'local') OR Compute pft (use 'pft')
+- Step 8 : Run commit
+- Step 9 : Decompose connectivity
+- Step 10 : Compute connectivity
+- Step 11 : Compute correlation
+- Step 12 : Compute binary correlation
+- Step 13 : Compute confusion matrix
+
 ## Getting started
 
-To run the base version of the pipeline on the training data, you can run
+You will need to have scilpy scripts loaded as part of your environment. To run the base version of the pipeline on the training data, you can run:
 
 ```bash
 $ cd code
