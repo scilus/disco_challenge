@@ -30,7 +30,8 @@ def main():
         parser.error("The estimated connectivity matrix should have a shape 16x16. The input estimated matrix has a shape %s" % str(matrix.shape))
     
     #The Pearson correlation coefficient is computed on the lower triangle of the 16x16 array.
-    r, pvalue = scipy.stats.pearsonr(np.tril(GT, -1).flatten(), np.tril(matrix, -1).flatten())
+    mask = np.tril(np.ones(matrix.shape), -1) > 0
+    r, pvalue = scipy.stats.pearsonr(GT[mask].flatten(), matrix[mask].flatten())
     
     print("The r coefficient is %f." % r)
         
