@@ -4,10 +4,10 @@ This is the main repository of the processing pipeline for the SCIL's submission
 
 ## Data
 
-All of the relevant data is stored on braindata (`braindata/datasets/DiSCo`). Three datasets are available:
-- DiSCo1 is the training data, for which we have the ground-truth connectivity matrix.
-- DiSCo3 is the validation data, for which we also have the ground-truth connectivity matrix.
-- DiSCo2 is the test data, for which we do not have the ground-truth connectivity matrix.
+All of the relevant data is stored on braindata (`braindata/datasets/DiSCo`) and uses the BIDS format. Three datasets are available:
+- sub-DiSCo1 is the training data, for which we have the ground-truth connectivity matrix.
+- sub-DiSCo3 is the validation data, for which we also have the ground-truth connectivity matrix.
+- sub-DiSCo2 is the test data, for which we do not have the ground-truth connectivity matrix.
 
 ## Pipeline
 
