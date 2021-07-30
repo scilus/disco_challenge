@@ -27,14 +27,9 @@
 # e.g. ./DiSCo_connectivity_pipeline.sh DiSCo_DWI_shell_full.nii.gz DiSCo_DWI_shell_full.bval DiSCo_DWI_shell_full.bvec DiSCo1_ROIs.nii.gz DiSCo1_Connectivity_Matrix_Cross-Sectional_Area.txt pft outpath/
 
 usage() {
-  echo "$(basename $0) \
-        [in_dwi] \
-        [in_bval] \
-        [in_bvec] \
-        [in_rois] \
-        [in_connectivity_truth] \
-        [tracking_method] \
-        [out_path]"; exit 1;
+  msg="Usage: $(basename $0) [in_dwi] [in_bval] [in_bvec] [in_rois]"
+  msg="$msg [in_connectivity_truth] [tracking_method] [out_path]"
+  echo "$msg"; exit 1;
 }
 
 in_dwi=""
@@ -67,6 +62,12 @@ done
 # Set positional arguments in their proper place
 eval set -- "$PARAMS"
 
+if [ "$#" -ne 7 ]
+then
+  echo "Error: Missing mandatory arguments"
+  usage
+fi
+
 in_dwi=$1
 in_bval=$2
 in_bvec=$3
@@ -76,16 +77,16 @@ tracking_method=$6
 out_path=$7
 
 dict_tracking_method=('local' 'pft')
-method_exists=False
+method_exists=false
 
-for method in $dict_tracking_method
+for method in "${dict_tracking_method[@]}"
 do 
 	if [ "$tracking_method" == "$method" ]; then
-		method_exists=True
+		method_exists=true
 	fi
 done
 
-if !$method_exists; then 
+if ! $method_exists; then 
 	echo "Tracking method is not valid. Use 'local' or 'pft'"
 	exit 0
 fi
