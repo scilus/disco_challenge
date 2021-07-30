@@ -43,12 +43,6 @@ out_path=""
 # Parse input arguments
 PARAMS=""
 
-if [ "$#" -ne 7 ]
-then
-  echo "Error: Missing mandatory arguments"
-  usage
-fi
-
 while (( "$#" )); do
   case "$1" in
     -h)
@@ -67,6 +61,12 @@ done
 
 # Set positional arguments in their proper place
 eval set -- "$PARAMS"
+
+if [ "$#" -ne 7 ]
+then
+  echo "Error: Missing mandatory arguments"
+  usage
+fi
 
 in_dwi=$1
 in_bval=$2
